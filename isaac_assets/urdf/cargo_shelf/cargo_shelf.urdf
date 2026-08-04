@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="pallet_rack">
+
+  <material name="rack_blue"><color rgba="0.0 0.2 0.6 1.0"/></material>
+  <material name="rack_orange"><color rgba="1.0 0.4 0.0 1.0"/></material>
+
+  <link name="rack_base">
+    
+    <inertial>
+      <mass value="150.0"/>
+      <origin xyz="0 0 2.5" rpy="0 0 0"/>
+      <inertia ixx="100.0" ixy="0" ixz="0" iyy="100.0" iyz="0" izz="50.0"/>
+    </inertial>
+
+    <visual><origin xyz="0.62 0.62 2.5" rpy="0 0 0"/><geometry><box size="0.06 0.06 5.0"/></geometry><material name="rack_blue"/></visual>
+    <collision><origin xyz="0.62 0.62 2.5" rpy="0 0 0"/><geometry><box size="0.06 0.06 5.0"/></geometry></collision>
+
+    <visual><origin xyz="0.62 -0.62 2.5" rpy="0 0 0"/><geometry><box size="0.06 0.06 5.0"/></geometry><material name="rack_blue"/></visual>
+    <collision><origin xyz="0.62 -0.62 2.5" rpy="0 0 0"/><geometry><box size="0.06 0.06 5.0"/></geometry></collision>
+
+    <visual><origin xyz="-0.62 0.62 2.5" rpy="0 0 0"/><geometry><box size="0.06 0.06 5.0"/></geometry><material name="rack_blue"/></visual>
+    <collision><origin xyz="-0.62 0.62 2.5" rpy="0 0 0"/><geometry><box size="0.06 0.06 5.0"/></geometry></collision>
+
+    <visual><origin xyz="-0.62 -0.62 2.5" rpy="0 0 0"/><geometry><box size="0.06 0.06 5.0"/></geometry><material name="rack_blue"/></visual>
+    <collision><origin xyz="-0.62 -0.62 2.5" rpy="0 0 0"/><geometry><box size="0.06 0.06 5.0"/></geometry></collision>
+
+    <visual><origin xyz="0 0 0.22" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry><material name="rack_orange"/></visual>
+    <collision><origin xyz="0 0 0.22" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry></collision>
+
+    <visual><origin xyz="0 0 1.15" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry><material name="rack_orange"/></visual>
+    <collision><origin xyz="0 0 1.15" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry></collision>
+
+    <visual><origin xyz="0 0 2.05" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry><material name="rack_orange"/></visual>
+    <collision><origin xyz="0 0 2.05" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry></collision>
+
+    <visual><origin xyz="0 0 2.95" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry><material name="rack_orange"/></visual>
+    <collision><origin xyz="0 0 2.95" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry></collision>
+
+    <visual><origin xyz="0 0 3.85" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry><material name="rack_orange"/></visual>
+    <collision><origin xyz="0 0 3.85" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry></collision>
+
+    <visual><origin xyz="0 0 4.75" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry><material name="rack_orange"/></visual>
+    <collision><origin xyz="0 0 4.75" rpy="0 0 0"/><geometry><box size="1.26 1.26 0.04"/></geometry></collision>
+
+  </link>
+</robot>

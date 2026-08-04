@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot name="pallet_rack">
+
+  <link name="rack_base">
+    
+    <inertial>
+      <mass value="100.0"/>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <inertia ixx="45.0" ixy="0.0" ixz="0.0" iyy="45.0" iyz="0.0" izz="5.0"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="desk.dae" scale="0.5 0.5 1.0"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="desk.dae" scale="0.5 0.5 1.0"/>
+      </geometry>
+    </collision>
+
+  </link>
+</robot>

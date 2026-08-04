@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot name="pallet">
+ 
+    <link name="base_link">
+        <visual>   <geometry> <mesh filename="chair.dae"/> </geometry> </visual>
+        <collision><geometry> <mesh filename="chair.dae"/> </geometry> </collision>
+
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="5.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="0.5"/>
+        </inertial>
+
+ </link>
+ 
+</robot>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot name="conveyor">
+ 
+    <link name="base_link">
+        <visual>   <geometry> <mesh filename="conveyor2.dae"/> </geometry> </visual>
+        <collision><geometry> <mesh filename="conveyor2.dae"/> </geometry> </collision>
+
+        <visual>   <geometry> <mesh filename="conveyor3.dae"/> </geometry> </visual>
+        <collision><geometry> <mesh filename="conveyor3.dae"/> </geometry> </collision>
+
+        <visual>   <geometry> <mesh filename="conveyor4.dae"/> </geometry> </visual>
+        <collision><geometry> <mesh filename="conveyor4.dae"/> </geometry> </collision>
+
+        <visual>   <geometry> <mesh filename="conveyor5.dae"/> </geometry> </visual>
+        <collision><geometry> <mesh filename="conveyor5.dae"/> </geometry> </collision>
+
+        <visual>   <geometry> <mesh filename="conveyor6.dae"/> </geometry> </visual>
+        <collision><geometry> <mesh filename="conveyor6.dae"/> </geometry> </collision>
+
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="4.0"/> <inertia ixx="0.8" ixy="0.0" ixz="0.0" iyy="0.8" iyz="0.0" izz="0.4"/>
+        </inertial>
+    </link>
+ 
+    <link name="belt_link">
+        <visual>   <geometry> <mesh filename="conveyor1.dae"/> </geometry> </visual>
+        <collision><geometry> <mesh filename="conveyor1.dae"/> </geometry> </collision>
+        
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.2" ixy="0.0" ixz="0.0" iyy="0.2" iyz="0.0" izz="0.1"/>
+        </inertial>
+    </link>
+
+    <joint name="base_to_belt" type="fixed">
+        <parent link="base_link"/>
+        <child link="belt_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/> </joint>
+
+</robot>

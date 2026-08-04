@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<robot name="tote">
+
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link">
+
+  </link>
+
+  <joint name="left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel_link"/>
+    <origin xyz="0 -0.4 -0.102" rpy="0 0 0"/> <axis xyz="0 1 0"/> </joint>
+  <link name="left_wheel_link">
+    <visual>
+      <geometry> <mesh filename="wheel.dae"/> </geometry>
+    </visual>
+    <collision>
+      <geometry> <mesh filename="wheel.dae"/> </geometry>
+    </collision>
+  </link>
+
+  <joint name="right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_wheel_link"/>
+    <origin xyz="0 0.4 -0.102" rpy="0 0 0"/> <axis xyz="0 1 0"/>
+  </joint>
+  <link name="right_wheel_link">
+    <visual>
+      <geometry> <mesh filename="wheel.dae"/> </geometry>
+    </visual>
+    <collision>
+      <geometry> <mesh filename="wheel.dae"/> </geometry>
+    </collision>
+  </link>
+
+  <joint name="cast_wheel_joint1" type="fixed">
+    <parent link="base_link"/>
+    <child link="cast_wheel_link1"/>
+    <origin xyz="0.5 0.4 -0.2" rpy="0 0 0"/>
+  </joint>
+  <link name="cast_wheel_link1">
+    <visual>
+      <geometry> <mesh filename="cast_wheel.dae"/> </geometry>
+    </visual>
+    <collision>
+      <geometry> <mesh filename="cast_wheel.dae"/> </geometry>
+    </collision>
+  </link>
+
+  <joint name="cast_wheel_joint2" type="fixed">
+    <parent link="base_link"/>
+    <child link="cast_wheel_link2"/>
+    <origin xyz="-0.5 0.4 -0.2" rpy="0 0 0"/>
+  </joint>
+  <link name="cast_wheel_link2">
+    <visual>
+      <geometry> <mesh filename="cast_wheel.dae"/> </geometry>
+    </visual>
+    <collision>
+      <geometry> <mesh filename="cast_wheel.dae"/> </geometry>
+    </collision>
+  </link>
+
+  <joint name="cast_wheel_joint3" type="fixed">
+    <parent link="base_link"/>
+    <child link="cast_wheel_link3"/>
+    <origin xyz="0.5 -0.4 -0.2" rpy="0 0 0"/>
+  </joint>
+  <link name="cast_wheel_link3">
+    <visual>
+      <geometry> <mesh filename="cast_wheel.dae"/> </geometry>
+    </visual>
+    <collision>
+      <geometry> <mesh filename="cast_wheel.dae"/> </geometry>
+    </collision>
+  </link>
+
+  <joint name="cast_wheel_joint4" type="fixed">
+    <parent link="base_link"/>
+    <child link="cast_wheel_link4"/>
+    <origin xyz="-0.5 -0.4 -0.2" rpy="0 0 0"/>
+  </joint>
+  <link name="cast_wheel_link4">
+    <visual>
+      <geometry> <mesh filename="cast_wheel.dae"/> </geometry>
+    </visual>
+    <collision>
+      <geometry> <mesh filename="cast_wheel.dae"/> </geometry>
+    </collision>
+  </link>
+
+  <joint name="mast_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="mast_link"/>
+    <origin xyz="0 0 0.58" rpy="0 0 0"/>
+  </joint>
+  <link name="mast_link">
+
+
+    <inertial>
+      <mass value="200.0"/> 
+      <origin xyz="0 0 0.3" rpy="0 0 0"/>
+      <inertia ixx="20.0" ixy="0.0" ixz="0.0" iyy="20.0" iyz="0.0" izz="5.0"/>
+    </inertial>
+  </link>
+
+  <joint name="lift_z_joint" type="prismatic">
+    <parent link="mast_link"/>
+    <child link="lift_shuttle_link"/>
+    <origin xyz="-0.05 0 0.2" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/> <limit lower="0.0" upper="2.5" effort="500" velocity="0.6"/>
+  </joint>
+
+  <link name="lift_shuttle_link">
+
+
+  </link>
+
+  <joint name="lift_rotation_joint" type="revolute">
+    <parent link="lift_shuttle_link"/>
+    <child link="shuttle_rotator_link"/>
+    <origin xyz="0.4 0 0.04" rpy="0 0 0"/> <axis xyz="0 0 1"/> <limit lower="-1.5708" upper="1.5708" effort="100" velocity="1.0"/> </joint>
+
+  <link name="shuttle_rotator_link">
+
+
+  </link>
+
+  <joint name="fork_extension_joint" type="prismatic">
+    <parent link="shuttle_rotator_link"/>
+    <child link="fork_arm_link"/>
+    <origin xyz="0.3 0 0.1" rpy="0 0 0"/> <axis xyz="-1 0 0"/> <limit lower="0.0" upper="1.2" effort="150" velocity="0.5"/> </joint>
+
+  <link name="fork_arm_link">
+    
+ 
+  </link>
+
+  <joint name="left_claw_joint" type="revolute">
+    <parent link="fork_arm_link"/>
+    <child link="left_claw_link"/>
+    <origin xyz="-0.68 -0.25 0" rpy="0.7854 0 0"/> <axis xyz="1 0 0"/> <limit lower="-0.8" upper="0.8" effort="50" velocity="0.1"/> </joint>
+
+  <link name="left_claw_link">
+
+  </link>
+
+  <joint name="right_claw_joint" type="revolute">
+    <parent link="fork_arm_link"/>
+    <child link="right_claw_link"/>
+    <origin xyz="-0.68 0.25 0" rpy="-0.7854 0 0"/> <axis xyz="-1 0 0"/> <limit lower="-0.8" upper="0.8" effort="50" velocity="0.1"/> </joint>
+
+  <link name="right_claw_link">
+
+  </link>
+ 
+</robot>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot name="pallet_rack">
+
+  <material name="rack_blue"><color rgba="0.0 0.2 0.6 1.0"/></material>
+  <material name="rack_orange"><color rgba="1.0 0.4 0.0 1.0"/></material>
+
+  <link name="rack_base">
+    
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+
+    <visual><origin xyz="0 0 0.0" rpy="0 0 0"/><geometry><mesh filename="tote_bottom.dae"/></geometry></visual>
+    <collision><origin xyz="0 0 0.0" rpy="0 0 0"/><geometry><mesh filename="tote_bottom.dae"/></geometry></collision>
+
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="tote_front.dae"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="tote_front.dae"/></geometry></collision>
+
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="tote_back.dae"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="tote_back.dae"/></geometry></collision>
+
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="tote_left.dae"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="tote_left.dae"/></geometry></collision>
+
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="tote_right.dae"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="tote_right.dae"/></geometry></collision>
+
+  </link>
+</robot>

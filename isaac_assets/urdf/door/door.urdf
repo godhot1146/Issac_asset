@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot name="door">
+ 
+    <link name="base_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="urdf/door/door.dae" scale="0.01 0.01 0.01"/>
+            </geometry>
+ 
+        </visual>
+
+ </link>
+ 
+</robot>

@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<robot name="low_amr">
+
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link">
+    <visual>
+      <geometry> <box size="0.1 0.1 0.1"/> </geometry>
+    </visual>
+    <collision>
+      <geometry> <box size="0.1 0.1 0.1"/> </geometry>
+    </collision>
+    <inertial>
+      <mass value="50.0"/>
+      <inertia ixx="5.0" ixy="0.0" ixz="0.0" iyy="5.0" iyz="0.0" izz="5.0"/>
+    </inertial>
+  </link>
+
+  <!-- ==========================================================================
+       🆕 좌측 구동륜 서스펜션
+       base_link -> (prismatic, 수직축) -> left_wheel_mount_link -> (continuous, 회전축) -> left_wheel_link
+       회전 자유도(주행)와 수직 자유도(캐스터와의 0.001m 유격 흡수)를 완전히 분리한다.
+       ========================================================================== -->
+  <joint name="left_wheel_suspension_joint" type="prismatic">
+    <parent link="base_link"/>
+    <child link="left_wheel_mount_link"/>
+    <origin xyz="0 -0.3 -0.051" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <!-- 캐스터 대비 0.001m 유격 + 약간의 여유만큼만 움직이도록 스트로크를 작게 제한 -->
+    <limit lower="-0.01" upper="0.005" effort="1000" velocity="0.1"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="left_wheel_mount_link">
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="left_wheel_joint" type="continuous">
+    <parent link="left_wheel_mount_link"/>
+    <child link="left_wheel_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <link name="left_wheel_link">
+    <visual>   <geometry> <mesh filename="wheel.dae"/> </geometry> </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.57079632679 0 0"/>
+      <geometry> 
+        <cylinder radius="0.1" length="0.1"/> 
+      </geometry> 
+    </collision>
+  </link>
+
+  <!-- ==========================================================================
+       🆕 우측 구동륜 서스펜션 (좌측과 동일한 구조)
+       ========================================================================== -->
+  <joint name="right_wheel_suspension_joint" type="prismatic">
+    <parent link="base_link"/>
+    <child link="right_wheel_mount_link"/>
+    <origin xyz="0 0.3 -0.051" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.01" upper="0.005" effort="1000" velocity="0.1"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="right_wheel_mount_link">
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="right_wheel_joint" type="continuous">
+    <parent link="right_wheel_mount_link"/>
+    <child link="right_wheel_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <link name="right_wheel_link">
+    <visual>   <geometry> <mesh filename="wheel.dae"/> </geometry> </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.57079632679 0 0"/>
+      <geometry> 
+        <cylinder radius="0.1" length="0.1"/> 
+      </geometry> 
+    </collision>
+  </link>
+
+  <joint name="cast_wheel_joint1" type="fixed">
+    <parent link="base_link"/> <child link="cast_wheel_link1"/>
+    <origin xyz="0.4 -0.3 -0.1" rpy="0 0 0"/>
+  </joint>
+  <link name="cast_wheel_link1">
+    <visual>   <geometry> <mesh filename="cast_wheel.dae"/> </geometry> </visual>
+    <collision><geometry> <mesh filename="cast_wheel.dae"/> </geometry> </collision>
+  </link>
+
+  <joint name="cast_wheel_joint2" type="fixed">
+    <parent link="base_link"/> <child link="cast_wheel_link2"/>
+    <origin xyz="-0.4 0.3 -0.1" rpy="0 0 0"/>
+  </joint>
+  <link name="cast_wheel_link2">
+    <visual>   <geometry> <mesh filename="cast_wheel.dae"/> </geometry> </visual>
+    <collision><geometry> <mesh filename="cast_wheel.dae"/> </geometry> </collision>
+  </link>
+
+  <joint name="cast_wheel_joint3" type="fixed">
+    <parent link="base_link"/> <child link="cast_wheel_link3"/>
+    <origin xyz="0.4 0.3 -0.1" rpy="0 0 0"/>
+  </joint>
+  <link name="cast_wheel_link3">
+    <visual>   <geometry> <mesh filename="cast_wheel.dae"/> </geometry> </visual>
+    <collision><geometry> <mesh filename="cast_wheel.dae"/> </geometry> </collision>
+  </link>
+
+  <joint name="cast_wheel_joint4" type="fixed">
+    <parent link="base_link"/> <child link="cast_wheel_link4"/>
+    <origin xyz="-0.4 -0.3 -0.1" rpy="0 0 0"/>
+  </joint>
+  <link name="cast_wheel_link4">
+    <visual>   <geometry> <mesh filename="cast_wheel.dae"/> </geometry> </visual>
+    <collision><geometry> <mesh filename="cast_wheel.dae"/> </geometry> </collision>
+  </link>
+
+  <joint name="mast_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="mast_link"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+  </joint>
+  <link name="mast_link">
+    <visual> <geometry> <mesh filename="mast_up.dae"/> </geometry> </visual>
+    <visual> <geometry> <mesh filename="mast_forward.dae"/> </geometry> </visual>
+    <visual> <geometry> <mesh filename="mast_back.dae"/> </geometry> </visual>
+    <visual> <geometry> <mesh filename="mast_right.dae"/> </geometry> </visual>
+    <visual> <geometry> <mesh filename="mast_left.dae"/> </geometry> </visual>
+
+    <collision> <geometry> <mesh filename="mast_up.dae"/> </geometry> </collision>
+    <collision> <geometry> <mesh filename="mast_forward.dae"/> </geometry> </collision>
+    <collision> <geometry> <mesh filename="mast_back.dae"/> </geometry> </collision>
+    <collision> <geometry> <mesh filename="mast_right.dae"/> </geometry> </collision>
+    <collision> <geometry> <mesh filename="mast_left.dae"/> </geometry> </collision>
+    
+    <inertial>
+      <mass value="40.0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.2" ixy="0.0" ixz="0.0" iyy="0.2" iyz="0.0" izz="0.05"/>
+    </inertial>
+  </link>
+
+  <joint name="lift_down_prismatic_joint" type="prismatic">
+    <parent link="mast_link"/>
+    <child link="lift_down_virtual_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/> <limit lower="0.0" upper="0.2" effort="5000" velocity="0.1"/>
+  </joint>
+
+  <link name="lift_down_virtual_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link>
+
+  <joint name="lift_down_revolute_joint" type="revolute">
+    <parent link="lift_down_virtual_link"/>
+    <child link="lift_down_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/> <limit lower="-6.28" upper="6.28" effort="50000" velocity="10.0"/> </joint>
+
+  <link name="lift_down_link">
+    <visual> <geometry> <mesh filename="lift_down.dae"/> </geometry> </visual>
+    <collision> <geometry> <mesh filename="lift_down.dae"/> </geometry> </collision>
+    <inertial>
+      <mass value="12.5"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.05" ixy="0.0" ixz="0.0" iyy="0.05" iyz="0.0" izz="0.05"/>
+    </inertial>
+  </link>
+
+  <joint name="lift_up_joint" type="fixed">
+    <parent link="lift_down_link"/>
+    <child link="lift_up_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/> </joint>
+
+  <link name="lift_up_link">
+    <visual> <geometry> <mesh filename="lift_up.dae"/> </geometry> </visual>
+    <collision> <geometry> <mesh filename="lift_up.dae"/> </geometry> </collision>
+    <inertial>
+      <mass value="12.5"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.05" ixy="0.0" ixz="0.0" iyy="0.05" iyz="0.0" izz="0.05"/>
+    </inertial>
+  </link>
+
+</robot>

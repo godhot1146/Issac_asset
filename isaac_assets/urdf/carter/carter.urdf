@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot name="carter_amr">
+  <material name="gray"><color rgba="0.5 0.5 0.5 1"/></material>
+  <material name="black"><color rgba="0.1 0.1 0.1 1"/></material>
+
+  <link name="chassis">
+    <visual>
+      <geometry><box size="0.72 0.50 0.30"/></geometry>
+      <material name="gray"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.72 0.50 0.30"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="49.6"/> <inertia ixx="2.0" ixy="0" ixz="0" iyy="3.0" iyz="0" izz="3.0"/>
+    </inertial>
+  </link>
+
+  <link name="fl_wheel">
+    <visual><origin rpy="1.5708 0 0"/><geometry><cylinder length="0.08" radius="0.14"/></geometry><material name="black"/></visual>
+    <collision><origin rpy="1.5708 0 0"/><geometry><cylinder length="0.08" radius="0.14"/></geometry></collision>
+    <inertial><mass value="2.0"/><inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/></inertial>
+  </link>
+  <joint name="fl_joint" type="continuous">
+    <parent link="chassis"/><child link="fl_wheel"/>
+    <origin xyz="0.25 0.29 -0.10"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="fr_wheel">
+    <visual><origin rpy="1.5708 0 0"/><geometry><cylinder length="0.08" radius="0.14"/></geometry><material name="black"/></visual>
+    <collision><origin rpy="1.5708 0 0"/><geometry><cylinder length="0.08" radius="0.14"/></geometry></collision>
+    <inertial><mass value="2.0"/><inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/></inertial>
+  </link>
+  <joint name="fr_joint" type="continuous">
+    <parent link="chassis"/><child link="fr_wheel"/>
+    <origin xyz="0.25 -0.29 -0.10"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="rl_wheel">
+    <visual><origin rpy="1.5708 0 0"/><geometry><cylinder length="0.08" radius="0.14"/></geometry><material name="black"/></visual>
+    <collision><origin rpy="1.5708 0 0"/><geometry><cylinder length="0.08" radius="0.14"/></geometry></collision>
+    <inertial><mass value="2.0"/><inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/></inertial>
+  </link>
+  <joint name="rl_joint" type="continuous">
+    <parent link="chassis"/><child link="rl_wheel"/>
+    <origin xyz="-0.25 0.29 -0.10"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="rr_wheel">
+    <visual><origin rpy="1.5708 0 0"/><geometry><cylinder length="0.08" radius="0.14"/></geometry><material name="black"/></visual>
+    <collision><origin rpy="1.5708 0 0"/><geometry><cylinder length="0.08" radius="0.14"/></geometry></collision>
+    <inertial><mass value="2.0"/><inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/></inertial>
+  </link>
+  <joint name="rr_joint" type="continuous">
+    <parent link="chassis"/><child link="rr_wheel"/>
+    <origin xyz="-0.25 -0.29 -0.10"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+</robot>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+  air_compressor.urdf
+  에어 컴프레셔. 단일 바디(링크 1개).
+  - 시각(visual): meshes/air_compressor.stl (STL 원본 13,100면, mm→m 스케일·원점정렬)
+  - 충돌(collision): 박스로 단순화 (메쉬 삼각형 충돌은 물리 연산에 부담)
+  - 치수 약 0.46 x 0.31 x 0.65 m, 바닥면 z=0 정렬 (배치 쉬움)
+-->
+<robot name="air_compressor">
+
+  <material name="compressor_red"> <color rgba="0.70 0.15 0.12 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.324"/>
+      <mass value="10.0"/>
+      <!-- 박스 관성 (m=10, 0.462x0.313x0.648): ixx=m/12(y²+z²) 등 -->
+      <inertia ixx="0.43" ixy="0" ixz="0" iyy="0.53" iyz="0" izz="0.26"/>
+    </inertial>
+
+    <!-- 보이는 형상: 변환 메쉬 -->
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/air_compressor.stl" scale="1 1 1"/></geometry>
+      <material name="compressor_red"/>
+    </visual>
+
+    <!-- 물리 충돌: 박스로 단순화 (치수=메쉬 바운딩박스, 중심 z=높이/2) -->
+    <collision>
+      <origin xyz="0 0 0.324"/>
+      <geometry><box size="0.4618 0.3127 0.6480"/></geometry>
+    </collision>
+  </link>
+</robot>

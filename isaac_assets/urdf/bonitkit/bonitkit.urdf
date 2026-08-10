@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+  bonitkit.urdf
+  테스트용 단일 바디 asset.
+  - 원본: bonitkit-botinkit.step (9 solids)
+  - visual: meshes/bonitkit.stl (mm -> m 변환, 1,180 facets)
+  - collision: 전체 bounding box로 단순화
+  - 크기: 0.827 x 0.935 x 1.773 m, 바닥면 z=0
+  - 질량: 테스트용 가정값 100 kg
+-->
+<robot name="bonitkit">
+
+  <material name="bonitkit_gray">
+    <color rgba="0.55 0.58 0.62 1.0"/>
+  </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 -0.0075 0.8865" rpy="0 0 0"/>
+      <mass value="100.0"/>
+      <!-- 100 kg bounding-box approximation: 0.827 x 0.935 x 1.773 m -->
+      <inertia
+          ixx="33.48128333" ixy="0" ixz="0"
+          iyy="31.89548333" iyz="0" izz="12.98461667"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/bonitkit.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="bonitkit_gray"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 -0.0075 0.8865" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.827 0.935 1.773"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

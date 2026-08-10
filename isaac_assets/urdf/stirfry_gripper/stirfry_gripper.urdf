@@ -1,0 +1,1128 @@
+<?xml version="1.0"?>
+<!--
+  One-link rigid stir-fry gripper generated from stirfry_gripper.step.
+  Mesh coordinates are metres. There are no internal joints.
+  Collision is an explicit 156-piece convex decomposition of the
+  central 30.5 mm width; this preserves both hook openings and the relieved
+  upper/lower contact arcs. The visual mesh contains the 0.75 mm side chamfers.
+
+  PROVISIONAL PHYSICS VALUE:
+  Mass/inertia assume uniform aluminium at 2700 kg/m^3 because no measured
+  gripper mass was found. Replace them together when a measured mass/material
+  is available.
+-->
+<robot name="stirfry_gripper">
+  <material name="stirfry_gripper_aluminum">
+    <color rgba="0.72 0.74 0.76 1.0"/>
+  </material>
+
+  <link name="stirfry_gripper_link">
+    <inertial>
+      <origin xyz="0.0714894332 0 -0.0020389604" rpy="0 0 0"/>
+      <mass value="0.4965946713"/>
+      <inertia
+          ixx="0.000362086613" ixy="0" ixz="0.000318562821"
+          iyy="0.00321059761" iyz="0" izz="0.00293325229"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/stirfry_gripper.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="stirfry_gripper_aluminum"/>
+    </visual>
+
+    <collision name="gripper_convex_000">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_000.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_001">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_001.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_002">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_002.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_003">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_003.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_004">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_004.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_005">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_005.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_006">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_006.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_007">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_007.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_008">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_008.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_009">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_009.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_010">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_010.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_011">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_011.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_012">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_012.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_013">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_013.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_014">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_014.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_015">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_015.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_016">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_016.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_017">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_017.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_018">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_018.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_019">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_019.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_020">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_020.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_021">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_021.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_022">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_022.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_023">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_023.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_024">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_024.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_025">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_025.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_026">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_026.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_027">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_027.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_028">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_028.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_029">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_029.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_030">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_030.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_031">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_031.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_032">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_032.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_033">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_033.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_034">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_034.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_035">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_035.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_036">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_036.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_037">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_037.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_038">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_038.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_039">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_039.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_040">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_040.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_041">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_041.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_042">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_042.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_043">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_043.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_044">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_044.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_045">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_045.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_046">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_046.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_047">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_047.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_048">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_048.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_049">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_049.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_050">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_050.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_051">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_051.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_052">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_052.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_053">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_053.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_054">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_054.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_055">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_055.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_056">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_056.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_057">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_057.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_058">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_058.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_059">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_059.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_060">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_060.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_061">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_061.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_062">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_062.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_063">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_063.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_064">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_064.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_065">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_065.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_066">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_066.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_067">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_067.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_068">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_068.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_069">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_069.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_070">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_070.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_071">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_071.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_072">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_072.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_073">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_073.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_074">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_074.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_075">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_075.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_076">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_076.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_077">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_077.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_078">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_078.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_079">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_079.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_080">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_080.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_081">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_081.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_082">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_082.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_083">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_083.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_084">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_084.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_085">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_085.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_086">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_086.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_087">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_087.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_088">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_088.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_089">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_089.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_090">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_090.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_091">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_091.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_092">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_092.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_093">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_093.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_094">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_094.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_095">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_095.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_096">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_096.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_097">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_097.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_098">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_098.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_099">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_099.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_100">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_100.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_101">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_101.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_102">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_102.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_103">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_103.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_104">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_104.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_105">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_105.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_106">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_106.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_107">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_107.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_108">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_108.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_109">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_109.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_110">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_110.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_111">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_111.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_112">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_112.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_113">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_113.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_114">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_114.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_115">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_115.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_116">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_116.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_117">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_117.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_118">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_118.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_119">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_119.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_120">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_120.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_121">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_121.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_122">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_122.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_123">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_123.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_124">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_124.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_125">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_125.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_126">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_126.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_127">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_127.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_128">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_128.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_129">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_129.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_130">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_130.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_131">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_131.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_132">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_132.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_133">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_133.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_134">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_134.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_135">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_135.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_136">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_136.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_137">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_137.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_138">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_138.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_139">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_139.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_140">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_140.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_141">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_141.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_142">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_142.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_143">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_143.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_144">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_144.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_145">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_145.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_146">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_146.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_147">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_147.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_148">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_148.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_149">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_149.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_150">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_150.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_151">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_151.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_152">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_152.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_153">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_153.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_154">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_154.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="gripper_convex_155">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/gripper_collision_155.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

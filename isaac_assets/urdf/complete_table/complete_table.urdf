@@ -1,0 +1,562 @@
+<?xml version="1.0"?>
+<!--
+  complete_table.urdf
+  Complete table V2, converted from complete_table_v2.step.
+  - visual: meshes/complete_table.stl (metres, XY-centred, floor z=0)
+  - collision: explicit convex top prisms plus lower-frame box primitives
+  - bounding-box size: 1 x 0.35 x 0.85 m
+  - volume: 0.0211619404 m^3
+  - mass/inertia: uniform stainless steel at 7850 kg/m^3
+-->
+<robot name="complete_table">
+
+  <material name="complete_table_stainless">
+    <color rgba="0.62 0.64 0.66 1.0"/>
+  </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.0128140967 0.0137472873 0.693653881" rpy="0 0 0"/>
+      <mass value="166.121232"/>
+      <inertia
+          ixx="11.5401152" ixy="-0.113911095" ixz="0.2902391"
+          iyy="30.0569243" iyz="-0.199531054" izz="23.4088639"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/complete_table.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="complete_table_stainless"/>
+    </visual>
+
+    <!-- Exact lower-frame boxes from the source STEP; top prisms cover z=0.810..0.850 m. -->
+    <collision name="leg_front_left">
+      <origin xyz="-0.472 -0.147 0.405" rpy="0 0 0"/>
+      <geometry><box size="0.045 0.045 0.810"/></geometry>
+    </collision>
+    <collision name="leg_front_right">
+      <origin xyz="0.472 -0.147 0.405" rpy="0 0 0"/>
+      <geometry><box size="0.045 0.045 0.810"/></geometry>
+    </collision>
+    <collision name="leg_back_left">
+      <origin xyz="-0.472 0.147 0.405" rpy="0 0 0"/>
+      <geometry><box size="0.045 0.045 0.810"/></geometry>
+    </collision>
+    <collision name="leg_back_right">
+      <origin xyz="0.472 0.147 0.405" rpy="0 0 0"/>
+      <geometry><box size="0.045 0.045 0.810"/></geometry>
+    </collision>
+    <collision name="back_rail">
+      <origin xyz="0 0.147 0.7725" rpy="0 0 0"/>
+      <geometry><box size="0.899 0.025 0.075"/></geometry>
+    </collision>
+
+    <!-- 72 convex prisms tessellated from the exact STEP top face. The circular
+         bowl opening and its horizontal gripper-entry slot remain open. -->
+    <collision name="top_000">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_000.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_001">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_001.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_002">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_002.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_003">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_003.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_004">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_004.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_005">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_005.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_006">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_006.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_007">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_007.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_008">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_008.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_009">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_009.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_010">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_010.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_011">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_011.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_012">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_012.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_013">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_013.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_014">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_014.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_015">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_015.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_016">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_016.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_017">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_017.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_018">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_018.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_019">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_019.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_020">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_020.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_021">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_021.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_022">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_022.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_023">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_023.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_024">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_024.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_025">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_025.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_026">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_026.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_027">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_027.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_028">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_028.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_029">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_029.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_030">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_030.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_031">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_031.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_032">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_032.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_033">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_033.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_034">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_034.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_035">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_035.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_036">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_036.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_037">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_037.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_038">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_038.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_039">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_039.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_040">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_040.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_041">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_041.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_042">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_042.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_043">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_043.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_044">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_044.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_045">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_045.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_046">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_046.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_047">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_047.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_048">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_048.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_049">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_049.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_050">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_050.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_051">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_051.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_052">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_052.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_053">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_053.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_054">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_054.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_055">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_055.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_056">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_056.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_057">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_057.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_058">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_058.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_059">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_059.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_060">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_060.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_061">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_061.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_062">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_062.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_063">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_063.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_064">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_064.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_065">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_065.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_066">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_066.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_067">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_067.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_068">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_068.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_069">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_069.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_070">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_070.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+
+    <collision name="top_071">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/collision/complete_table_top_071.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

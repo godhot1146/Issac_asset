@@ -1,0 +1,58 @@
+solid
+ facet normal  5.797118e-01  8.148216e-01 -8.135611e-19
+   outer loop
+     vertex -6.000000e-01  6.000000e-01  8.100000e-01
+     vertex -5.194364e-01  5.426824e-01  8.500000e-01
+     vertex -5.194364e-01  5.426824e-01  8.100000e-01
+   endloop
+ endfacet
+ facet normal  5.797118e-01  8.148216e-01 -0.000000e+00
+   outer loop
+     vertex -6.000000e-01  6.000000e-01  8.100000e-01
+     vertex -6.000000e-01  6.000000e-01  8.500000e-01
+     vertex -5.194364e-01  5.426824e-01  8.500000e-01
+   endloop
+ endfacet
+ facet normal -6.198110e-01 -7.847511e-01 -1.914686e-17
+   outer loop
+     vertex -5.227269e-01  5.389683e-01  8.100000e-01
+     vertex -6.000000e-01  6.000000e-01  8.500000e-01
+     vertex -6.000000e-01  6.000000e-01  8.100000e-01
+   endloop
+ endfacet
+ facet normal -6.198110e-01 -7.847511e-01  0.000000e+00
+   outer loop
+     vertex -5.227269e-01  5.389683e-01  8.100000e-01
+     vertex -5.227269e-01  5.389683e-01  8.500000e-01
+     vertex -6.000000e-01  6.000000e-01  8.500000e-01
+   endloop
+ endfacet
+ facet normal  7.485079e-01 -6.631258e-01 -1.578475e-18
+   outer loop
+     vertex -5.194364e-01  5.426824e-01  8.100000e-01
+     vertex -5.227269e-01  5.389683e-01  8.500000e-01
+     vertex -5.227269e-01  5.389683e-01  8.100000e-01
+   endloop
+ endfacet
+ facet normal  7.485079e-01 -6.631258e-01  0.000000e+00
+   outer loop
+     vertex -5.194364e-01  5.426824e-01  8.100000e-01
+     vertex -5.194364e-01  5.426824e-01  8.500000e-01
+     vertex -5.227269e-01  5.389683e-01  8.500000e-01
+   endloop
+ endfacet
+ facet normal -0.000000e+00  0.000000e+00 -1.000000e+00
+   outer loop
+     vertex -5.194364e-01  5.426824e-01  8.100000e-01
+     vertex -5.227269e-01  5.389683e-01  8.100000e-01
+     vertex -6.000000e-01  6.000000e-01  8.100000e-01
+   endloop
+ endfacet
+ facet normal  0.000000e+00  0.000000e+00  1.000000e+00
+   outer loop
+     vertex -5.194364e-01  5.426824e-01  8.500000e-01
+     vertex -6.000000e-01  6.000000e-01  8.500000e-01
+     vertex -5.227269e-01  5.389683e-01  8.500000e-01
+   endloop
+ endfacet
+endsolid

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+  work_table.urdf
+  구이 솔루션용 A0509 작업대. 단일 바디(링크 1개).
+  - 원본: assets/WorkTable2.step (STEP → STL 변환, mm 단위 → m 스케일)
+  - 시각(visual): meshes/work_table.stl (전체 바운딩박스 0.90x0.60x0.95m)
+  - 충돌(collision): 삼각형 면적 분석 결과, 실제 상판(하중을 받는 평평한 면)은 z=0.81~0.85m에
+    있고 950mm까지의 영역은 얇은 테두리 립(면적 360cm^2, 작음)뿐이라 콜리전을 0.95가 아닌
+    0.85로 낮춰서 상판 위에 물체를 놓았을 때 뜨지 않도록 함. 하단 선반(0.12~0.16m)은 생략.
+  - 치수 약 0.90 x 0.60 x 0.85 m(콜리전 기준), 로봇/거치대는 상판(z=0.85)에 얹음
+  - 메쉬 원점은 바닥 모서리(x=0,y=0,z=0)에 정렬됨 (센터가 아님) → 배치 시 참고
+-->
+<robot name="work_table">
+
+  <material name="table_gray"> <color rgba="0.6 0.6 0.62 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.45 0.3 0.425"/>
+      <mass value="40.0"/>
+      <!-- 박스 관성 (m=40, 0.9x0.6x0.85) -->
+      <inertia ixx="3.42" ixy="0" ixz="0" iyy="4.91" iyz="0" izz="3.90"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/work_table.stl" scale="1 1 1"/></geometry>
+      <material name="table_gray"/>
+    </visual>
+
+    <!-- 충돌 박스 = 실제 상판 높이(0~0.85m)만 반영 (x:0~0.9, y:0~0.6) -->
+    <collision>
+      <origin xyz="0.45 0.3 0.425"/>
+      <geometry><box size="0.9 0.6 0.85"/></geometry>
+    </collision>
+  </link>
+</robot>

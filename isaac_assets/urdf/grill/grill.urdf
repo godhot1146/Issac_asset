@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+  grill.urdf
+  업소용 스테이크 그릴러(삿갓버너 9구). 단일 바디(링크 1개).
+  - 원본: assets/Grill2.step (STEP → STL 변환, mm 단위 → m 스케일)
+  - 시각(visual): meshes/grill.stl
+  - 충돌(collision): 박스로 단순화 (메쉬 바운딩박스 기준)
+  - 치수 약 1.50 x 0.70 x 0.80 m (도면 규격 1500x600x800, 조작 손잡이 돌출 포함)
+  - 메쉬 원점은 바닥 모서리(x=0,y=0,z=0)에 정렬됨 (센터가 아님) → 배치 시 참고
+-->
+<robot name="grill">
+
+  <material name="grill_steel"> <color rgba="0.55 0.55 0.58 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.75 0.2525 0.4"/>
+      <mass value="80.0"/>
+      <!-- 박스 관성 (m=80, 1.5x0.695x0.8) -->
+      <inertia ixx="7.49" ixy="0" ixz="0" iyy="19.27" iyz="0" izz="18.22"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/grill.stl" scale="1 1 1"/></geometry>
+      <material name="grill_steel"/>
+    </visual>
+
+    <!-- 충돌 박스 = 메쉬 바운딩박스 중심/크기 (x:0~1.5, y:-0.095~0.6, z:0~0.8) -->
+    <collision>
+      <origin xyz="0.75 0.2525 0.4"/>
+      <geometry><box size="1.5 0.695 0.8"/></geometry>
+    </collision>
+  </link>
+</robot>

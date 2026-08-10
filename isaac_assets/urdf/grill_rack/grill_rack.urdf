@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+  grill_rack.urdf
+  구이 준비/완료 거치대 (석쇠 받침대, 낮은 랙). 단일 바디(링크 1개).
+  - 원본: assets/rag.step (STEP → STL 변환, mm 단위 → m 스케일) — 이전 "구이 준비, 완료
+    거치대.step"과 치수 완전 동일(재추출본), 콜리전 보정 값 그대로 유효.
+  - 시각(visual): meshes/grill_rack.stl (전체 바운딩박스 0.905x0.603x0.103m, 위치결정용 핀 2개 포함)
+  - 충돌(collision): 얇은 바닥판만 반영 — 삼각형 면적 분석 결과 실제 "바닥판"은 0~2mm
+    두께이고, 103mm까지 올라가는 건 위치결정용 얇은 핀 2개(면적 <1cm^2, 하중면 아님)뿐이라
+    전체 바운딩박스로 콜리전을 잡으면 바스켓이 핀 높이(10cm)에서 뜬다 — 바닥판 두께만 사용.
+  - 메쉬 원점: x는 중심 정렬(-0.4525~0.4525), y는 비대칭(-0.28~0.323), z는 바닥(0~0.103).
+  - 준비존/완료존 양쪽에 동일 에셋을 재사용.
+-->
+<robot name="grill_rack">
+
+  <material name="rack_steel"> <color rgba="0.6 0.62 0.65 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0.0215 0.0025"/>
+      <mass value="8.0"/>
+      <!-- 박스 관성 (m=8, 0.905x0.603x0.005 근사) -->
+      <inertia ixx="0.0243" ixy="0" ixz="0" iyy="0.0546" iyz="0" izz="0.0788"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/grill_rack.stl" scale="1 1 1"/></geometry>
+      <material name="rack_steel"/>
+    </visual>
+
+    <!-- 충돌 박스 = 실제 바닥판 두께(0~5mm, 여유 포함)만 반영. 핀은 충돌에서 제외. -->
+    <collision>
+      <origin xyz="0 0.0215 0.0025"/>
+      <geometry><box size="0.905 0.603 0.005"/></geometry>
+    </collision>
+  </link>
+</robot>

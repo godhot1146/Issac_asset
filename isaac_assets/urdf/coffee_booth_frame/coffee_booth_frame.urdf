@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+  coffee_booth_frame.urdf  (임시 커피부스 프레임)
+  프리미티브 박스만 사용(메쉬/STL 없음) → 치수만 바꿔 쉽게 편집 가능.
+  - footprint 1.4 x 2.0 m, 높이 0.8 m
+  - 기둥 50x50mm 4개(모서리) + 상단 둘레 레일 4개
+  - 원점 = 바닥-중앙(z=0이 바닥면) → 스폰 Vec3(x,y,0)로 바닥에 안착
+  - 고정 설비이므로 스폰 시 fix_base_link=True 로 로드할 것
+-->
+<robot name="coffee_booth_frame">
+
+  <material name="frame_sus"> <color rgba="0.75 0.77 0.80 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.4000"/>
+      <mass value="25.0"/>
+      <inertia ixx="9.6667" ixy="0" ixz="0" iyy="5.4167" iyz="0" izz="12.4167"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="-0.6750 -0.9750 0.4000"/>
+      <geometry><box size="0.0500 0.0500 0.8000"/></geometry>
+      <material name="frame_sus"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.6750 -0.9750 0.4000"/>
+      <geometry><box size="0.0500 0.0500 0.8000"/></geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.6750 0.9750 0.4000"/>
+      <geometry><box size="0.0500 0.0500 0.8000"/></geometry>
+      <material name="frame_sus"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.6750 0.9750 0.4000"/>
+      <geometry><box size="0.0500 0.0500 0.8000"/></geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.6750 -0.9750 0.4000"/>
+      <geometry><box size="0.0500 0.0500 0.8000"/></geometry>
+      <material name="frame_sus"/>
+    </visual>
+    <collision>
+      <origin xyz="0.6750 -0.9750 0.4000"/>
+      <geometry><box size="0.0500 0.0500 0.8000"/></geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.6750 0.9750 0.4000"/>
+      <geometry><box size="0.0500 0.0500 0.8000"/></geometry>
+      <material name="frame_sus"/>
+    </visual>
+    <collision>
+      <origin xyz="0.6750 0.9750 0.4000"/>
+      <geometry><box size="0.0500 0.0500 0.8000"/></geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.0000 -0.9750 0.7750"/>
+      <geometry><box size="1.4000 0.0500 0.0500"/></geometry>
+      <material name="frame_sus"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0000 -0.9750 0.7750"/>
+      <geometry><box size="1.4000 0.0500 0.0500"/></geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.0000 0.9750 0.7750"/>
+      <geometry><box size="1.4000 0.0500 0.0500"/></geometry>
+      <material name="frame_sus"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0000 0.9750 0.7750"/>
+      <geometry><box size="1.4000 0.0500 0.0500"/></geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.6750 0.0000 0.7750"/>
+      <geometry><box size="0.0500 2.0000 0.0500"/></geometry>
+      <material name="frame_sus"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.6750 0.0000 0.7750"/>
+      <geometry><box size="0.0500 2.0000 0.0500"/></geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.6750 0.0000 0.7750"/>
+      <geometry><box size="0.0500 2.0000 0.0500"/></geometry>
+      <material name="frame_sus"/>
+    </visual>
+    <collision>
+      <origin xyz="0.6750 0.0000 0.7750"/>
+      <geometry><box size="0.0500 2.0000 0.0500"/></geometry>
+    </collision>
+  </link>
+</robot>

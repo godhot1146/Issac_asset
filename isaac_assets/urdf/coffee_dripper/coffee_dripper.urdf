@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+  coffee_dripper.urdf
+  드립 커피용 드리퍼(깔때기). 단일 바디(링크 1개).
+  - 원본: AJ_드리퍼.step (STEP → STL, cascadio가 mm→m 자동 환산 → scale=1)
+  - 시각(visual):  meshes/coffee_dripper.stl
+  - 충돌(collision): 바운딩 박스로 단순화 (grill_basket/air_compressor와 동일 방식)
+  - 치수 약 0.107 x 0.120 x 0.086 m
+  - 메쉬 원점: x는 중심 정렬, 바닥이 z=-0.008 부근
+  - 로봇이 집었다 놓는 이동체이므로 스폰 시 fix_base_link=False 로 로드할 것
+-->
+<robot name="coffee_dripper">
+
+  <material name="dripper_body"> <color rgba="0.85 0.85 0.88 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0000 0.0066 0.0353"/>
+      <mass value="0.2"/>
+      <inertia ixx="0.000362" ixy="0" ixz="0" iyy="0.000312" iyz="0" izz="0.000429"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/coffee_dripper.stl" scale="1 1 1"/></geometry>
+      <material name="dripper_body"/>
+    </visual>
+
+    <!-- 충돌 박스 = 메쉬 바운딩박스 중심/크기 -->
+    <collision>
+      <origin xyz="0.0000 0.0066 0.0353"/>
+      <geometry><box size="0.1066 0.1198 0.0858"/></geometry>
+    </collision>
+  </link>
+</robot>

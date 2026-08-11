@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+  fry_stand.urdf
+  바탕화면 "튀김 준비, 완료 거치대.step" → 변환. 단일 솔리드(준비/완료 두 구역이 한 몸체로 합쳐진 거치대).
+  - 원본 STEP 단위 mm → 메쉬 좌표 자체를 m로 스케일 (scale="1 1 1")
+  - 원점: 바닥면 중심 근처 (x:-0.4525~0.4525, y:-0.28~0.323, z:0~0.2039)
+  - 치수 0.905 x 0.603 x 0.204 m (삼각형 972면) — 튀김기/작업대(약 0.9x0.6m)와 풋프린트가 비슷해 그 위에 얹기 적합
+  - 시각: 원본 메쉬. 충돌: 원본 메쉬(VHACD)는 얇은 바닥판+뒤쪽 고리 돌기가 하나의 볼록껍질로 뭉쳐져
+    바닥판 중앙 상당 부분이 실제보다 ~10cm 높게 뜬 것처럼 잡히는 문제가 있어(시뮬레이션으로 확인),
+    박스 4개(바닥판/앞쪽 물결벽/고리 2개)로 직접 근사해 대체함 — 바닥판 위에 놓이는 바스켓 등이
+    정확한 높이에 접촉하도록.
+  - 정적 소품이므로 fix_base_link=True 권장
+-->
+<robot name="fry_stand">
+
+  <material name="stand_steel"> <color rgba="0.68 0.69 0.71 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0.02 0.10"/>
+      <mass value="3.0"/>
+      <!-- 박스 근사 관성 (m=3.0, 0.905x0.603x0.204) -->
+      <inertia ixx="0.1013" ixy="0" ixz="0" iyy="0.2151" iyz="0" izz="0.2957"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/fry_stand.stl" scale="1 1 1"/></geometry>
+      <material name="stand_steel"/>
+    </visual>
+
+    <!-- 바닥판: x:-0.444~0.444, y:-0.28~0.323, z:0~0.004 -->
+    <collision>
+      <origin xyz="0 0.0215 0.002"/>
+      <geometry><box size="0.888 0.603 0.004"/></geometry>
+    </collision>
+    <!-- 앞쪽(로봇팔 쪽) 물결벽: y:-0.28~-0.276, z:0~0.204(최고 높이로 근사) -->
+    <collision>
+      <origin xyz="0 -0.278 0.102"/>
+      <geometry><box size="0.888 0.006 0.204"/></geometry>
+    </collision>
+    <!-- 뒤쪽 고리 돌기 2개: x:-0.25~-0.2 / 0.2~0.25, y:0.278~0.323, z:0~0.103 -->
+    <collision>
+      <origin xyz="-0.225 0.3005 0.0515"/>
+      <geometry><box size="0.05 0.045 0.103"/></geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.225 0.3005 0.0515"/>
+      <geometry><box size="0.05 0.045 0.103"/></geometry>
+    </collision>
+  </link>
+</robot>

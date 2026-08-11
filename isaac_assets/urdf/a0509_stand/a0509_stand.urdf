@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+  a0509_stand.urdf
+  바탕화면 A0509_Stand.step → 변환. 단일 바디(링크 1개).
+  - 원본 STEP 단위 mm → 메쉬 좌표 자체를 m로 스케일 (scale="1 1 1")
+  - 원점: 로봇 장착면(윗면) 중심 (x:-0.3~0.3, y:-0.45~0.45, z:-0.81~0)
+    즉 원점이 로봇 베이스 마운트 포인트 — 스폰 시 z만 지정하면 그 높이가 곧 로봇 장착 높이가 됨.
+  - 치수 0.60 x 0.90 x 0.81 m (삼각형 1,016면)
+  - 시각(visual): 원본 메쉬. 충돌(collision): 박스로 단순화(치수=메쉬 바운딩박스)
+  - 정적 구조물이므로 스폰 시 AssetOptions.fix_base_link=True 권장
+-->
+<robot name="a0509_stand">
+
+  <material name="stand_gray"> <color rgba="0.55 0.57 0.60 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 -0.405"/>
+      <mass value="40.0"/>
+      <!-- 박스 관성 (m=40, 0.60x0.90x0.81) -->
+      <inertia ixx="4.887" ixy="0" ixz="0" iyy="3.387" iyz="0" izz="3.900"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/a0509_stand.stl" scale="1 1 1"/></geometry>
+      <material name="stand_gray"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 -0.405"/>
+      <geometry><box size="0.60 0.90 0.81"/></geometry>
+    </collision>
+  </link>
+</robot>

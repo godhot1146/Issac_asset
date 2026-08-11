@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+  mini_pc.urdf
+  바탕화면 Mini_PC.step → 변환. 단일 바디(링크 1개).
+  - 원본 STEP 단위 mm → 메쉬 좌표 자체를 m로 스케일 (scale="1 1 1")
+  - 원점: 바닥면 중심 (x:-0.0585~0.0585, y:-0.056~0.056, z:0~0.0492)
+  - 치수 0.117 x 0.112 x 0.0492 m (삼각형 3,916면)
+  - 시각(visual): 원본 메쉬. 충돌(collision): 박스로 단순화(치수=메쉬 바운딩박스)
+  - 정적 소품(선반/스탠드 수납 등)이므로 스폰 시 AssetOptions.fix_base_link=True 권장
+-->
+<robot name="mini_pc">
+
+  <material name="pc_black"> <color rgba="0.12 0.12 0.13 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.0246"/>
+      <mass value="1.0"/>
+      <!-- 박스 관성 (m=1.0, 0.117x0.112x0.0492) -->
+      <inertia ixx="0.001247" ixy="0" ixz="0" iyy="0.001342" iyz="0" izz="0.002186"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/mini_pc.stl" scale="1 1 1"/></geometry>
+      <material name="pc_black"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.0246"/>
+      <geometry><box size="0.117 0.112 0.0492"/></geometry>
+    </collision>
+  </link>
+</robot>

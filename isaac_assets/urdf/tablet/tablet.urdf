@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+  tablet.urdf
+  바탕화면 Tablet.step → 변환. 단일 바디(링크 1개).
+  - 원본 STEP 단위 mm → 메쉬 좌표 자체를 m로 스케일 (scale="1 1 1")
+  - 원점: 바닥면 중심 (x:-0.1178~0.1178, y:-0.0772~0.0772, z:0~0.0094)
+  - 치수 0.2357 x 0.1545 x 0.0094 m (삼각형 300면)
+  - 시각(visual): 원본 메쉬. 충돌(collision): 박스로 단순화(치수=메쉬 바운딩박스)
+  - 기본은 정적 소품(테이블 위 거치 등)으로 fix_base_link=True 권장.
+    그리퍼로 집어 옮기는 대상으로 쓰려면 스폰 시 False로 바꿀 것.
+-->
+<robot name="tablet">
+
+  <material name="tablet_dark"> <color rgba="0.10 0.10 0.11 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.0047"/>
+      <mass value="0.5"/>
+      <!-- 박스 관성 (m=0.5, 0.2357x0.1545x0.0094) -->
+      <inertia ixx="0.000998" ixy="0" ixz="0" iyy="0.002318" iyz="0" izz="0.003309"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/tablet.stl" scale="1 1 1"/></geometry>
+      <material name="tablet_dark"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.0047"/>
+      <geometry><box size="0.2357 0.1545 0.0094"/></geometry>
+    </collision>
+  </link>
+</robot>

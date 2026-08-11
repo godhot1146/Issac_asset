@@ -1,0 +1,26 @@
+{
+  "base_link": [
+    "Base_A509.stl"
+  ],
+  "link_1": [
+    "J1_A0509.stl"
+  ],
+  "link_2": [
+    "J2_A0509.stl",
+    "LINK1_A0509.stl"
+  ],
+  "link_3": [
+    "J3_A0509.stl"
+  ],
+  "link_4": [
+    "J4_A0509.stl",
+    "LINK2_A0509.stl"
+  ],
+  "link_5": [
+    "SOLID.stl"
+  ],
+  "link_6": [
+    "J6_A0509.stl",
+    "TOOL_FLANGE_A0509.stl"
+  ]
+}

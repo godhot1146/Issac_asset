@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+  worktable2.urdf
+  바탕화면 WorkTable2.step → 변환된 작업대. 단일 바디(링크 1개).
+  - 원본 STEP 단위 mm → 메쉬 좌표 자체를 m로 스케일 (scale="1 1 1")
+  - 원점: 테이블 바닥면 한쪽 모서리 (x:0~0.9, y:0~0.6, z:0~0.95)
+  - 시각(visual): meshes/worktable2.stl
+  - 상판은 평평한 한 면이 아니라 2단 구조: 대부분(y:0~0.56)은 z=0.85(메인 상판),
+    뒤쪽 얇은 턱(y:0.56~0.6)만 z=0.95(전체 높이)로 10cm 더 높음.
+  - 충돌(collision): 처음엔 전체 바운딩박스(0.9x0.6x0.95) 하나로 단순화했었는데, 그러면 메인 상판
+    영역까지 전부 z=0.95 높이로 충돌 처리되어(2단 구조가 무시됨) 그 위에 놓인 물체가 10cm 뜨는
+    문제가 있었다(시뮬레이션으로 확인). → 박스 2개(메인 상판/뒤쪽 턱)로 실제 2단 형태에 맞게 분리.
+  - 치수 0.90 x 0.60 x 0.95 m
+  - 정적 구조물이므로 스폰 시 AssetOptions.fix_base_link=True 권장
+-->
+<robot name="worktable2">
+
+  <material name="table_gray"> <color rgba="0.65 0.65 0.65 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.45 0.30 0.475"/>
+      <mass value="15.0"/>
+      <!-- 박스 관성 (m=15, 0.90x0.60x0.95) -->
+      <inertia ixx="1.578" ixy="0" ixz="0" iyy="2.141" iyz="0" izz="1.4625"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/worktable2.stl" scale="1 1 1"/></geometry>
+      <material name="table_gray"/>
+    </visual>
+
+    <!-- 메인 상판 영역: x:0~0.9, y:0~0.56, z:0~0.85 -->
+    <collision>
+      <origin xyz="0.45 0.28 0.425"/>
+      <geometry><box size="0.90 0.56 0.85"/></geometry>
+    </collision>
+    <!-- 뒤쪽 턱 영역: x:0~0.9, y:0.56~0.6, z:0~0.95 -->
+    <collision>
+      <origin xyz="0.45 0.58 0.475"/>
+      <geometry><box size="0.90 0.04 0.95"/></geometry>
+    </collision>
+  </link>
+</robot>

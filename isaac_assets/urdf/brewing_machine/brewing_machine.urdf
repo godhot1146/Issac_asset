@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+  brewing_machine.urdf
+  바탕화면 Mooi_MO3_Brewing_Machine.step → 변환. 단일 바디(링크 1개).
+  - 원본 STEP 단위 mm → 메쉬 좌표 자체를 m로 스케일 (scale="1 1 1")
+  - 원점: 바닥면 한쪽 모서리 (x:0~0.69, y:0~0.208, z:0~0.485)
+  - 치수 0.69 x 0.208 x 0.485 m (삼각형 1,480면)
+  - 시각(visual): 원본 메쉬. 충돌(collision): 박스로 단순화(치수=메쉬 바운딩박스)
+  - 정적 소품(작업대/스탠드 위 거치)이므로 스폰 시 AssetOptions.fix_base_link=True 권장
+-->
+<robot name="brewing_machine">
+
+  <material name="brewer_steel"> <color rgba="0.72 0.73 0.75 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.345 0.104 0.2425"/>
+      <mass value="15.0"/>
+      <!-- 박스 관성 (m=15, 0.69x0.208x0.485) -->
+      <inertia ixx="0.3481" ixy="0" ixz="0" iyy="0.8891" iyz="0" izz="0.6493"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/brewing_machine.stl" scale="1 1 1"/></geometry>
+      <material name="brewer_steel"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0.345 0.104 0.2425"/>
+      <geometry><box size="0.69 0.208 0.485"/></geometry>
+    </collision>
+  </link>
+</robot>

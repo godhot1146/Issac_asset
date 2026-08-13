@@ -3,8 +3,11 @@
   hc880_smart_grinder.urdf
   바탕화면 HC-880_Smart_Grinder.stl → 변환. 단일 바디(링크 1개).
   - 원본 STL 단위 mm → 메쉬 좌표 자체를 m로 스케일 (scale="1 1 1")
-  - 원점: 모델 자체 기준점 (중심/바닥 어디에도 안 맞음, x:-0.090~0.090, y:-0.2575~0.1625, z:-0.010~0.570)
-  - 치수 0.180 x 0.420 x 0.580 m (삼각형 1,402면)
+  - 메쉬 파일 자체는 원본 CAD 기준점을 그대로 유지, base_link 원점은 visual/collision/inertial
+    origin 오프셋(0, 0.0475, 0.01)으로 밑면 정중앙에 재배치 (원래 밑면이 원점보다 10mm 더
+    파묻혀 있던 것을 보정)
+  - 치수 0.180 x 0.420 x 0.580 m (삼각형 1,402면), base_link 기준 x:-0.090~0.090,
+    y:-0.210~0.210, z:0~0.580 (밑면이 z=0)
   - 색상: 원본 STL 헤더에 기록된 Fusion 360 기본 색상(COLOR=A0A0A0FF)을 그대로 사용
   - 질량 18.0 kg은 유사 크기(air_compressor 15kg, doosan_controller 18kg)에 대한 공학적 추정치
   - 시각(visual): 원본 메쉬. 충돌(collision): 박스로 단순화(치수=메쉬 바운딩박스)
@@ -16,20 +19,20 @@
 
   <link name="base_link">
     <inertial>
-      <origin xyz="0 -0.0475 0.28"/>
+      <origin xyz="0 0 0.29"/>
       <mass value="18.0"/>
       <!-- 박스 관성 (m=18, 0.180x0.420x0.580) -->
       <inertia ixx="0.7692" ixy="0" ixz="0" iyy="0.5532" iyz="0" izz="0.3132"/>
     </inertial>
 
     <visual>
-      <origin xyz="0 0 0"/>
+      <origin xyz="0 0.0 0.01"/>
       <geometry><mesh filename="meshes/hc880_smart_grinder.stl" scale="1 1 1"/></geometry>
       <material name="grinder_gray"/>
     </visual>
 
     <collision>
-      <origin xyz="0 -0.0475 0.28"/>
+      <origin xyz="0 0 0.29"/>
       <geometry><box size="0.180 0.420 0.580"/></geometry>
     </collision>
   </link>

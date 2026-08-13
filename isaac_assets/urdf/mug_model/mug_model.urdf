@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+  mug_model.urdf
+  머그컵 (단일 바디, 링크 1개).
+  - 원본: mug_model.step (STEP → STL 변환, mm 단위 → m 스케일, FreeCAD 사용)
+  - 시각(visual)/충돌(collision): meshes/mug_model.stl 동일 메쉬 사용
+    (손잡이 포함 오목한 형상이라 IsaacGym 로드시 vhacd_enabled 옵션으로
+    런타임 자동 볼록 분해되는 것을 전제로 함 — 저장소의 다른 오목 물체들과 동일 방식)
+  - 바운딩박스: 0.1179 x 0.0888 x 0.0950 m (원점: 바닥 z=0, 손잡이가 +X쪽으로 돌출)
+  - 부피(STEP 솔리드, 벽 두께 포함): 7.8138e-05 m^3
+  - 질량/관성: 밀도 2350 kg/m^3(도자기/스톤웨어 가정)로 질량 산출,
+    관성은 손잡이를 무시한 얇은 원통 쉘 근사(반경 0.04438m, 높이 0.095m),
+    관성 원점은 STEP에서 계산된 실제 무게중심 사용.
+-->
+<robot name="mug_model">
+
+  <material name="mug_ceramic">
+    <color rgba="0.92 0.90 0.86 1.0"/>
+  </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0036 0.0 0.0394" rpy="0 0 0"/>
+      <mass value="0.1836"/>
+      <inertia ixx="0.0002285" ixy="0" ixz="0" iyy="0.0002285" iyz="0" izz="0.0003616"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/mug_model.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="mug_ceramic"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/mug_model.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

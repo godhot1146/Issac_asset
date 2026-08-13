@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+  mooi_mo3_brewing.urdf
+  홈 Mooi_MO3_Brewing.step → 변환. 단일 바디(링크 1개, 원본 7개 솔리드를 컴파운드로 병합).
+  - 원본 STEP 단위 mm → 메쉬 좌표 자체를 m로 스케일 (scale="1 1 1")
+  - 원점: 바닥면 중심 (x:-0.345~0.345, y:-0.104~0.104, z:0~0.49141)
+  - 치수 0.69 x 0.208 x 0.49141 m (삼각형 1,388면)
+  - 시각(visual): 원본 메쉬. 충돌(collision): 박스로 단순화(치수=메쉬 바운딩박스)
+  - mass=8.0kg은 실측이 아닌 동급 카운터탑 브루잉 머신 추정치 — 정확한 무게 필요 시 갱신할 것.
+  - 정적 소품(카운터/작업대 위 거치)이므로 스폰 시 AssetOptions.fix_base_link=True 권장
+-->
+<robot name="mooi_mo3_brewing">
+
+  <material name="mooi_mo3_brewing_body"> <color rgba="0.85 0.85 0.86 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.2457"/>
+      <mass value="8.0"/>
+      <!-- 박스 관성 (m=8.0, 0.69x0.208x0.49141) -->
+      <inertia ixx="0.189832" ixy="0" ixz="0" iyy="0.478389" iyz="0" izz="0.346243"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/mooi_mo3_brewing.stl" scale="1 1 1"/></geometry>
+      <material name="mooi_mo3_brewing_body"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.2457"/>
+      <geometry><box size="0.69 0.208 0.49141"/></geometry>
+    </collision>
+  </link>
+</robot>

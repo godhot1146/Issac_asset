@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+  two_finger_gripper.urdf
+  홈 Gripper_Body.step + Gripper_Finger.step → 변환. 3링크(body + 좌/우 finger) 평행 슬라이드
+  2손가락 그리퍼. 원본 STEP들이 같은 어셈블리 좌표계로 export된 것으로 보여, 각 파트를
+  독립적으로 재원점화하지 않고 mm→m 스케일만 적용해 원본 상대 위치를 그대로 보존했다
+  (즉 finger 메쉬 좌표 자체가 body 기준 정지 위치를 담고 있음 → 조인트 origin은 identity).
+
+  - Gripper_Finger.step 1개만 제공됨 → 오른쪽은 X=0(YZ) 평면 기준 미러링해서 별도 STL로 생성
+    (gripper_finger_r.stl). 왼쪽은 원본 그대로(gripper_finger_l.stl).
+  - base_link 원점: 몸체 바닥면 중심 (x:-0.048~0.048, y:-0.02~0.02, z:0~0.079)
+  - finger 원점: 마운트(피벗) 위치로 추정되는 지점, body와 동일 좌표계 (z:-0.042~0, body 바닥에서
+    아래로 돌출)
+  - 조인트: prismatic, axis=X. left_finger_joint가 마스터, right_finger_joint는 mimic으로 연동
+    (반대 축 방향이라 값이 커질수록 둘 다 중심 쪽으로 모여 '닫힘'). joint value=0(메쉬 export
+    원위치)일 때 이미 손가락 안쪽 면 사이 간격이 2mm(±0.001, 좌우 대칭)뿐이라 스트로크를
+    거기서부터 역산했다:
+      · 완전 닫힘(양쪽 안쪽 면이 맞닿음, 간격 0)  → q = +0.001
+      · 완전 열림(바깥쪽 면이 몸체 가장자리 x=±0.048과 나란해짐) → q = -0.011
+    "끝까지 열림" = STEP 원본에 있는 실제 슬라이드 홈(슬롯) 바깥쪽 벽(x=±0.047, 몸체 전체
+    바운딩박스 가장자리 ±0.048과는 다름 — FreeCAD로 X축 수직 평면을 뽑아 확인)에 손가락
+    바깥면이 닿는 지점. q = (0.002 - gap) / 2:
+      · 완전 닫힘(간격 0mm)   → q = +0.001
+      · 완전 열림(간격 22mm)  → q = -0.010  (손가락 바깥면이 슬롯 바깥쪽 벽 x=∓0.047에 닿음)
+    즉 limit lower=-0.010(열림, 간격 22mm) upper=0.001(닫힘, 간격 0mm). 참고: 같은 슬롯의
+    안쪽 벽이 x=∓0.001에 있어 q=0(rest 위치)이 이미 그 벽에 닿아있다 — "닫힘 0mm"가 이
+    슬롯 구조상 실제로 더 안쪽으로 안 들어갈 수도 있음(미검증, 시뮬레이터에서 확인 필요).
+    mass/inertia는 실측치가 아닌 크기 기반 추정값이니 정확한 값이 있으면 갱신할 것.
+  - 콜리전은 다른 에셋과 동일하게 박스로 단순화 — 정밀한 파지(grasp) 접촉이 필요하면
+    stirfry_gripper처럼 convex 분해 메쉬로 교체 권장.
+  - 스폰 시 base_link를 로봇 손목 플랜지에 fix_base=False로 붙이고(AssetOptions는 그리퍼
+    자체에선 보통 fix_base_link=False, 로봇 쪽 attach 로직에서 weld), left/right finger
+    joint는 position/velocity drive로 제어.
+-->
+<robot name="two_finger_gripper">
+
+  <material name="gripper_metal"> <color rgba="0.6 0.6 0.63 1.0"/> </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.0395"/>
+      <mass value="0.25"/>
+      <!-- 박스 관성 (m=0.25, 0.096x0.04x0.079) -->
+      <inertia ixx="0.0001634" ixy="0" ixz="0" iyy="0.0003220" iyz="0" izz="0.0002253"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/gripper_body.stl" scale="1 1 1"/></geometry>
+      <material name="gripper_metal"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.0395"/>
+      <geometry><box size="0.096 0.04 0.079"/></geometry>
+    </collision>
+  </link>
+
+  <link name="left_finger_link">
+    <inertial>
+      <origin xyz="-0.019 0 -0.021"/>
+      <mass value="0.03"/>
+      <!-- 박스 관성 (m=0.03, 0.036x0.015x0.042) -->
+      <inertia ixx="0.0000050" ixy="0" ixz="0" iyy="0.0000077" iyz="0" izz="0.0000038"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/gripper_finger_l.stl" scale="1 1 1"/></geometry>
+      <material name="gripper_metal"/>
+    </visual>
+
+    <collision>
+      <origin xyz="-0.019 0 -0.021"/>
+      <geometry><box size="0.036 0.015 0.042"/></geometry>
+    </collision>
+  </link>
+
+  <link name="right_finger_link">
+    <inertial>
+      <origin xyz="0.019 0 -0.021"/>
+      <mass value="0.03"/>
+      <!-- 박스 관성 (m=0.03, 0.036x0.015x0.042) -->
+      <inertia ixx="0.0000050" ixy="0" ixz="0" iyy="0.0000077" iyz="0" izz="0.0000038"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry><mesh filename="meshes/gripper_finger_r.stl" scale="1 1 1"/></geometry>
+      <material name="gripper_metal"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0.019 0 -0.021"/>
+      <geometry><box size="0.036 0.015 0.042"/></geometry>
+    </collision>
+  </link>
+
+  <!-- 마스터 조인트: +방향 이동 = 중심(x=0)으로 모임 = 닫힘 -->
+  <joint name="left_finger_joint" type="prismatic">
+    <parent link="base_link"/>
+    <child link="left_finger_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-0.010" upper="0.001" effort="50" velocity="0.1"/>
+  </joint>
+
+  <!-- 미러 조인트: 축 방향이 반대라 left와 같은 값으로 구동하면 대칭으로 닫힘/열림 -->
+  <joint name="right_finger_joint" type="prismatic">
+    <parent link="base_link"/>
+    <child link="right_finger_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit lower="-0.010" upper="0.001" effort="50" velocity="0.1"/>
+    <mimic joint="left_finger_joint" multiplier="1" offset="0"/>
+  </joint>
+
+</robot>

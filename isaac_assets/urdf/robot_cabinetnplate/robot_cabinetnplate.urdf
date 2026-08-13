@@ -4,9 +4,11 @@
   바탕화면 Robot_cabinetnplate.step → 변환. 캐비닛(몸체) + 플레이트(상판) 솔리드 2개가 합쳐진 단일 바디.
   - 원본 STEP 단위 mm → 원본 BREP 스케일 변환이 일부 실린더 곡면에서 실패해(Convert_CylinderToBSplineSurface)
     mm 단위로 먼저 테셀레이션 후 정점만 m로 스케일하는 방식으로 우회 변환.
-  - 원점: 로봇 장착면(윗면) 부근 (x:-0.3~0.3, y:-0.45~0.45, z:-0.8~0.005)
-    a0509_stand.urdf와 풋프린트/높이가 거의 동일 — 같은 스탠드의 캐비닛+플레이트 분리 버전으로 보임.
-  - 치수 0.60 x 0.90 x 0.805 m (삼각형 27,212면)
+  - 원본 메쉬 좌표계는 로봇 장착면(윗면)이 원점(x:-0.3~0.3, y:-0.45~0.45, z:-0.8~0.005)이었으나,
+    a0509_stand.urdf(바닥이 원점)와 배치 관례를 통일하기 위해 visual/collision origin에
+    +0.8 오프셋을 줘서 링크 원점 = 바닥(z=0), 상판 = z≈0.805가 되도록 재정렬함(메쉬 파일 자체는 안 건드림).
+  - 치수 0.60(x) x 0.90(y) x 0.805(z) m, x/y는 중심 정렬, z는 바닥(0~0.805). (삼각형 27,212면)
+  - 로봇은 상판(z≈0.805)에 장착.
   - 시각(visual): 원본 메쉬. 충돌(collision): 박스로 단순화(치수=메쉬 바운딩박스)
   - 정적 구조물이므로 스폰 시 AssetOptions.fix_base_link=True 권장
 -->
@@ -16,20 +18,20 @@
 
   <link name="base_link">
     <inertial>
-      <origin xyz="0 0 -0.3975"/>
+      <origin xyz="0 0 0.4025"/>
       <mass value="40.0"/>
       <!-- 박스 관성 (m=40, 0.60x0.90x0.805) -->
       <inertia ixx="4.86" ixy="0" ixz="0" iyy="3.36" iyz="0" izz="3.90"/>
     </inertial>
 
     <visual>
-      <origin xyz="0 0 0"/>
+      <origin xyz="0 0 0.8"/>
       <geometry><mesh filename="meshes/robot_cabinetnplate.stl" scale="1 1 1"/></geometry>
       <material name="cabinet_gray"/>
     </visual>
 
     <collision>
-      <origin xyz="0 0 -0.3975"/>
+      <origin xyz="0 0 0.4025"/>
       <geometry><box size="0.60 0.90 0.805"/></geometry>
     </collision>
   </link>

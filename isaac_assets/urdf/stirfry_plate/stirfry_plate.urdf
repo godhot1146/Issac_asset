@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+  Converted from stirfry_plate_1500x2100.step.
+  The source mesh origin is one corner; the URDF origin recentres it on XY.
+  Retained as an asset, but excluded from the proposed full-booth layout because it
+  cannot cover the three tables, 1 m passage and Bonitkit together.
+-->
+<robot name="stirfry_plate">
+  <material name="plate_gray"><color rgba="0.45 0.47 0.50 1.0"/></material>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.0025"/>
+      <mass value="25.0"/>
+      <inertia ixx="9.18755" ixy="0" ixz="0" iyy="4.68755" iyz="0" izz="13.875"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.75 1.05 0"/>
+      <geometry><mesh filename="meshes/stirfry_plate_1500x2100.stl" scale="1 1 1"/></geometry>
+      <material name="plate_gray"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0025"/>
+      <geometry><box size="1.50 2.10 0.005"/></geometry>
+    </collision>
+  </link>
+</robot>

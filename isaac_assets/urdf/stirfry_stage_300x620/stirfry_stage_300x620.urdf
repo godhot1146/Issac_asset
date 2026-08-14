@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- Converted from stirfry_stage_300x620.step. Source axes already use XY floor and Z up. -->
+<robot name="stirfry_stage_300x620">
+  <material name="stainless"><color rgba="0.62 0.65 0.68 1.0"/></material>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.6"/>
+      <mass value="30.0"/>
+      <inertia ixx="4.47025" ixy="0" ixz="0" iyy="3.825" iyz="0" izz="1.09525"/>
+    </inertial>
+    <visual>
+      <geometry><mesh filename="meshes/stirfry_stage_300x620.stl" scale="1 1 1"/></geometry>
+      <material name="stainless"/>
+    </visual>
+    <collision name="top"><origin xyz="0 0 1.18"/><geometry><box size="0.30 0.59 0.04"/></geometry></collision>
+    <collision name="middle"><origin xyz="0 0 0.815"/><geometry><box size="0.30 0.59 0.03"/></geometry></collision>
+    <collision name="leg_pp"><origin xyz="0.135 0.280 0.58"/><geometry><box size="0.03 0.03 1.16"/></geometry></collision>
+    <collision name="leg_pn"><origin xyz="0.135 -0.280 0.58"/><geometry><box size="0.03 0.03 1.16"/></geometry></collision>
+    <collision name="leg_np"><origin xyz="-0.135 0.280 0.58"/><geometry><box size="0.03 0.03 1.16"/></geometry></collision>
+    <collision name="leg_nn"><origin xyz="-0.135 -0.280 0.58"/><geometry><box size="0.03 0.03 1.16"/></geometry></collision>
+  </link>
+</robot>

@@ -1,16 +1,18 @@
 <?xml version="1.0"?>
 <!--
   worktable2.urdf
-  바탕화면 WorkTable2.step → 변환된 작업대. 단일 바디(링크 1개).
+  Downloads/WorkTable2.step → 재변환된 작업대. 단일 바디(링크 1개).
+  (기존 asset을 새 STEP 파일 기준으로 갱신 — FreeCAD(freecadcmd)로 STEP→STL 테셀레이션 후 trimesh로 mm→m 스케일)
   - 원본 STEP 단위 mm → 메쉬 좌표 자체를 m로 스케일 (scale="1 1 1")
-  - 원점: 테이블 바닥면 한쪽 모서리 (x:0~0.9, y:0~0.6, z:0~0.95)
+  - 원점: 테이블 바닥면 한쪽 모서리 (x:0~0.9, y:0~0.6, z:0~0.94)
   - 시각(visual): meshes/worktable2.stl
-  - 상판은 평평한 한 면이 아니라 2단 구조: 대부분(y:0~0.56)은 z=0.85(메인 상판),
-    뒤쪽 얇은 턱(y:0.56~0.6)만 z=0.95(전체 높이)로 10cm 더 높음.
-  - 충돌(collision): 처음엔 전체 바운딩박스(0.9x0.6x0.95) 하나로 단순화했었는데, 그러면 메인 상판
-    영역까지 전부 z=0.95 높이로 충돌 처리되어(2단 구조가 무시됨) 그 위에 놓인 물체가 10cm 뜨는
-    문제가 있었다(시뮬레이션으로 확인). → 박스 2개(메인 상판/뒤쪽 턱)로 실제 2단 형태에 맞게 분리.
-  - 치수 0.90 x 0.60 x 0.95 m
+  - 상판은 평평한 한 면이 아니라 2단 구조: 대부분(y:0~0.56)은 z=0.84(메인 상판),
+    뒤쪽 얇은 턱(y:0.56~0.6)만 z=0.94(전체 높이)로 10cm 더 높음. (메쉬 정점 분석으로 확인)
+  - 충돌(collision): 박스 2개(메인 상판/뒤쪽 턱)로 실제 2단 형태에 맞게 분리
+    (이전 버전에서 바운딩박스 1개로 단순화했을 때 물체가 뜨는 문제가 있었음 — 동일 이슈 방지)
+  - 치수 0.90 x 0.60 x 0.94 m
+  - 질량/관성: 실측 CAD 재질 정보가 없어 15kg(스테인리스 프렙테이블 실측 통상치)로 가정,
+    watertight 메쉬 실체적 기준 균일밀도로 trimesh가 계산한 값(질량중심이 하부 선반 쪽으로 치우침, 정상)
   - 정적 구조물이므로 스폰 시 AssetOptions.fix_base_link=True 권장
 -->
 <robot name="worktable2">
@@ -19,10 +21,9 @@
 
   <link name="base_link">
     <inertial>
-      <origin xyz="0.45 0.30 0.475"/>
+      <origin xyz="0.44999943 0.27504407 0.30076219"/>
       <mass value="15.0"/>
-      <!-- 박스 관성 (m=15, 0.90x0.60x0.95) -->
-      <inertia ixx="1.578" ixy="0" ixz="0" iyy="2.141" iyz="0" izz="1.4625"/>
+      <inertia ixx="1.660771" ixy="-0.000008" ixz="-0.000008" iyy="2.461216" iyz="0.062366" izz="1.773268"/>
     </inertial>
 
     <visual>
@@ -31,15 +32,15 @@
       <material name="table_gray"/>
     </visual>
 
-    <!-- 메인 상판 영역: x:0~0.9, y:0~0.56, z:0~0.85 -->
+    <!-- 메인 상판 영역: x:0~0.9, y:0~0.56, z:0~0.84 -->
     <collision>
-      <origin xyz="0.45 0.28 0.425"/>
-      <geometry><box size="0.90 0.56 0.85"/></geometry>
+      <origin xyz="0.45 0.28 0.42"/>
+      <geometry><box size="0.90 0.56 0.84"/></geometry>
     </collision>
-    <!-- 뒤쪽 턱 영역: x:0~0.9, y:0.56~0.6, z:0~0.95 -->
+    <!-- 뒤쪽 턱 영역: x:0~0.9, y:0.56~0.6, z:0~0.94 -->
     <collision>
-      <origin xyz="0.45 0.58 0.475"/>
-      <geometry><box size="0.90 0.04 0.95"/></geometry>
+      <origin xyz="0.45 0.58 0.47"/>
+      <geometry><box size="0.90 0.04 0.94"/></geometry>
     </collision>
   </link>
 </robot>

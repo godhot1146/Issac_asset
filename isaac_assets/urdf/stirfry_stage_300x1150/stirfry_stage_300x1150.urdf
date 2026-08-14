@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+  Converted from stirfry_stage_300x1150.step.
+  This is the selected V2 layout table: 0.30 x 1.15 m footprint, 0.90 m top.
+-->
+<robot name="stirfry_stage_300x1150">
+  <material name="stainless"><color rgba="0.62 0.65 0.68 1.0"/></material>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.45"/>
+      <mass value="30.0"/>
+      <inertia ixx="5.33125" ixy="0" ixz="0" iyy="2.25" iyz="0" izz="3.53125"/>
+    </inertial>
+    <visual>
+      <geometry><mesh filename="meshes/stirfry_stage_300x1150.stl" scale="1 1 1"/></geometry>
+      <material name="stainless"/>
+    </visual>
+    <collision name="top"><origin xyz="0 0 0.88"/><geometry><box size="0.30 1.15 0.04"/></geometry></collision>
+    <collision name="leg_pp"><origin xyz="0.135 0.560 0.43"/><geometry><box size="0.03 0.03 0.86"/></geometry></collision>
+    <collision name="leg_pn"><origin xyz="0.135 -0.560 0.43"/><geometry><box size="0.03 0.03 0.86"/></geometry></collision>
+    <collision name="leg_np"><origin xyz="-0.135 0.560 0.43"/><geometry><box size="0.03 0.03 0.86"/></geometry></collision>
+    <collision name="leg_nn"><origin xyz="-0.135 -0.560 0.43"/><geometry><box size="0.03 0.03 0.86"/></geometry></collision>
+  </link>
+</robot>
